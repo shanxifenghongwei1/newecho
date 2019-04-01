@@ -1,0 +1,134 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
+
+<view class='any'>
+  <!-- 活动添加 -->
+  <navigator url='/pages/personal/business/businessactiveadd/businessactiveadd?shop_id={{shop_id}}' class='site'>
+    <view class='site1 iconfont icon-add_icon' style='font-size:30rpx;'></view>
+    <view class='site2 name-site-onlode global_middle_font font-colors'>活动添加</view>
+    <view class='site3 iconfont icon-arrow-right-copy' style='font-size:25rpx'></view>
+  </navigator>
+
+  <!-- 排队返现 -->
+  <navigator url='/pages/personal/business/businessactiveawait/businessactiveawait?shop_id={{shop_id}}' class='site'>
+    <view class='site1 iconfont icon-fanxian' style='font-size:30rpx;'></view>
+    <view class='site2 name-site-onlode global_middle_font font-colors'>排队返现</view>
+    <view class='site3 iconfont icon-arrow-right-copy' style='font-size:25rpx'></view>
+  </navigator>
+  <!-- 活动查看 -->
+  <view class='site' bindtap='activ'>
+    <view class='site1 iconfont icon-chakan'></view>
+    <view class='site2 name-site-onlode global_middle_font font-colors'>活动查看</view>
+    <view class='site3 iconfont {{istrue == true ? "icon-jiantouxia" : "icon-arrow-right-copy"}}' style="font-siez:26rpx"></view>
+  </view>
+
+
+  <!-- 活动选择查看 -->
+  <scroll-view scroll-y wx:if='{{istrue}}' lower-threshold='10' bindscrolltolower='addinit' style='background:#fff;width:94%;padding:3%;height:700rpx;'>
+
+    <view wx:if='{{activity.length <= 0 }}' class='global_middle_font' style='width:94%;padding:3%;line-height:80rpx;'>无活动，请添加活动</view>
+
+
+
+
+
+    <view wx:if='{{activity.length > 0 }}' wx:for='{{activity}}' wx:key='index' style='margin-bottom:40rpx;'>
+      <view class="img_back_huodong">
+        <view style='font-size:32rpx;' class='img_back_huodong-1 color-big-font-size'>{{item.ac_type==1?'充值活动':'支付活动'}}</view>
+        <view class='img_back_huodong-2'>
+          <view class='center_img_back_fot'>
+            <text class='line-inline'>支付满</text>
+            <view class=' line-inline global_color_red'>{{item.money}}</view>
+            <text class=' line-inline'>送</text>
+            <view class=' line-inline global_color_red'>{{item.give_money}}</view>
+
+          </view>
+          <view class='center_img_back_fot_time'>结束时间：{{item.ac_etime}} </view>
+        </view>
+        <!-- <view class='img_back_huodong-3'> 去支付 </view> -->
+      </view>
+   
+
+
+
+    <!-- <view wx:if='{{activity.length > 0 }}' wx:for='{{activity}}' wx:key='index' style='margin-bottom:40rpx;'>
+      <view class='ticket flex_about' style='width:99%;border-right:1px solid #d54036;'>
+        <view style='font-size:25rpx;' class=' global_color_red ticket_money flex_about'>{{item.ac_type==1?'充值活动':'支付活动'}}
+        </view>
+        <view class="ticket_info">
+          <view class='global_middle_font global_color_red'>{{item.ac_title}}</view>
+          <view class='global_middle_font global_color_red'>{{item.ac_etime}}过期</view>
+        </view>
+      </view> -->
+      <!-- 删除，修改模块 -->
+      <view class='move-shop' style='width:100%;'>
+        <navigator url='/pages/personal/business/businessactiverechange/businessactiverechange?ac_id={{item.ac_id}}&shop_id={{shop_id}}' class='global_middle_font' style='width:49%;height:100%;text-align:center;border: 1rpx solid #eee;'>修改活动</navigator>
+        <view bindtap='removeac' data-index='{{index}}' class='global_middle_font' style='width:50%;height:100%;text-align:center;border: 1rpx solid #eee;'>删除活动</view>
+      </view>
+
+			 </view>
+
+
+    <!-- </view> -->
+    <!-- <view class='back-image-s'>
+
+      <view style='color:#fff;width:70%;height:70%;' class=''>
+        <view class='top_images-youhui'>
+          <view style='font-size:66rpx;width:100px;text-align:center;'>100000 </view>
+          <view style='color:#ff395e;margin-top:11px;margin-left:44px;font-size:13px'>满 <text> 100000 </text> 元使用</view>
+        </view>
+      </view>
+
+      <view></view>
+    </view> -->
+  </scroll-view>
+
+
+
+  <!-- 排队返现活动查看 -->
+  <view class='site' bindtap='runistru'>
+    <view class='site1 iconfont icon-chakan1' style='font-size:30rpx;'></view>
+    <view class='site2 name-site-onlode global_middle_font font-colors'>排队返现活动查看</view>
+    <view class='site3 iconfont {{runistrue == true ? "icon-jiantouxia" : "icon-arrow-right-copy"}}' style='font-size:25rpx'></view>
+  </view>
+
+  <scroll-view scroll-y lower-threshold='0' bindscrolltolower='runactve' wx:if='{{runistrue}}' style='width:94%;padding:3%;height:800rpx;'>
+
+    <view wx:for='{{runmoney}}' wx:key='index' class='one-activ'>
+      <view class='avtivcenter global_middle_font'>
+        <view>
+          <!-- <text>活动名称：</text> -->
+          <text class='font-colors' style='font-weight:400;font-size:30rpx;'>{{item.name}}</text>
+        </view>
+        <view class='peopresa'>
+          <text class='iconfont icon-ren'></text>
+          <text style='margin-left:8rpx;'>{{item.total_number}}</text>
+        </view>
+      </view>
+
+      <view class='leftandright global_middle_font middel'>
+        <view>活动内容：</view>
+        <view>支付满{{tools.turnInt(item.money)}}返{{tools.turnInt(item.return_money)}}</view>
+      </view>
+      <view class='avtivcenter global_middle_font leftandright'>
+        <view>返现期数：</view>
+        <view>{{item.periods}}</view>
+      </view>
+      <view class='avtivcenter global_middle_font leftandright'>
+        <view>未返现金额：</view>
+        <view>{{item.total_return_money - item.total_already_return_money}}</view>
+      </view>
+      <!-- 停止活动 -->
+      <view class='move-shop' style='width:100%;'>
+        <view class='global_middle_font button-view' data-id='{{item.id}}' bindtap='begin'>开启</view>
+        <view style='width:100rpx;'></view>
+        <view class='global_middle_font button-view-th' data-id='{{item.id}}' bindtap='modifier'>修改</view>
+        <view style='width:100rpx;'></view>
+        <view class='global_middle_font button-view-one' data-id='{{item.id}}' bindtap='suspend'>暂停</view>
+      </view>
+
+
+    </view>
+  </scroll-view>
+
+
+</view>

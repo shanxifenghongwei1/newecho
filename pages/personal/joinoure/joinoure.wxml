@@ -1,0 +1,122 @@
+<!-- 产品发布页面 -->
+<!-- 产品名称 -->
+<form bindsubmit="addshopproduct" report-submit='true'>
+
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺名称：</view>
+    <input name='shop_name' maxlength='30' class=' global_middle_font one-module-input' value='{{goods.goods_name}}' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+  <!-- 商品关键词 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺关键词：</view>
+    <input name='keywords' maxlength='20' class=' global_middle_font one-module-input' placeholder='请以空格分割关键词' value='{{goods.keywords}}' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+
+  <!-- 店铺类型 -->
+  <view class='module-three global_middle_font'>
+    <picker bindchange="bindPickerChange" value="type_index" data-id='{{idd}}' range-key='cat_name' range="{{type_array}}">
+      <view class="picker" name='cat_id'>
+        店铺类型：{{type_array[type_index].cat_name}}
+      </view>
+    </picker>
+  </view>
+
+
+  <!-- 商加简介 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺简介：</view>
+    <input name='brief' maxlength='240' class=' global_middle_font one-module-input' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+
+  <!-- 商家电话 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺联系方式：</view>
+    <input name='iphone' type='number' class=' global_middle_font one-module-input' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+  <!-- 营业开始时间 -->
+  <view class='one-module'>
+    <view class='global_middle_font one-module-text'>营业开始时间：</view>
+    <picker mode='time' bindchange='bigintime' name='business_start_hours' class='global_middle_font one-module-input'>{{date}} </picker>
+  </view>
+
+  <!-- 活动结束时间 -->
+  <view class='one-module'>
+    <view class='global_middle_font one-module-text'>营业结束时间：</view>
+    <picker mode='time' name='business_end_hours' bindchange='endtime' class='global_middle_font one-module-input'>{{time}} </picker>
+  </view>
+
+  <!-- 营业时间备注 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>营业时间备注：</view>
+    <input name='business_hours_re' maxlength='7' class=' global_middle_font one-module-input' placeholder='例:周一至周五' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+
+  <!-- 店铺地址 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺地址:</view>
+    <input disabled='true' maxlength='80' value='{{address}}' class=' global_middle_font one-module-input' bindtap='get_userlocal' placeholder='点击选择或修改地址' placeholder-style='font-size:23rpx;color:#666;'> </input>
+  </view>
+
+  <!--详细地址 -->
+  <view class='one-module'>
+    <view class=' global_middle_font one-module-text'>店铺详细地址:</view>
+    <input class=' global_middle_font one-module-input' bindinput='address_add' value='{{address_add}}' placeholder-style='font-size:28rpx;color:#666;'> </input>
+  </view>
+
+
+
+
+  <!-- 营业执照 -->
+  <view class='onereques'>
+    <view class='onereques-list'>
+      <view class='onereques-list-name global_middle_font one-accretion'>店铺缩略图:</view>
+      <view class='revamp global_middle_font' bindtap='auser'>
+        <view class='image-logo'>
+          <image class='user-logo' src='{{asrc}}'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 店铺缩略图 -->
+  <view class='onereques'>
+    <view class='onereques-list'>
+      <view class='onereques-list-name global_middle_font one-accretion'>营业执照:</view>
+      <view class='revamp global_middle_font' bindtap='user'>
+        <view class='image-logo'>
+          <image class='user-logo' src='{{src}}'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 身份证照片 -->
+  <view class='addimage-one'>
+    <view class='onereques-list-name onereques-list'>
+      <view class='global_middle_font'>身份证:</view>
+    </view>
+    <view class='imang-border'>
+      <image bindtap='shenfen_exchange' wx:for='{{identity}}' wx:key='index' data-id='{{index}}' style='width:100%;margin-left:25%;' mode='scaleToFill' class='user-banner' src='{{item}}'></image>
+    </view>
+    <view wx:if='{{identity.length < 2 }}' class='addimage-two' bindtap='addshenfenimageones'>+</view>
+  </view>
+
+  <!-- 近景图上传 -->
+  <view class='addimage-one'>
+    <view class='onereques-list-name onereques-list'>
+      <view class='global_middle_font'>店铺轮播图:</view>
+    </view>
+    <view class='imang-border'>
+      <image bindtap='image_exchange' wx:for='{{banner}}' wx:key='index' data-id='{{index}}' style='width:100%;margin-left:25%;' mode='scaleToFill' class='user-banner' src='{{item}}'></image>
+    </view>
+    <view wx:if='{{banner.length < 3 }}' class='addimage-two' bindtap='addimageones'>+</view>
+  </view>
+
+  <checkbox-group class='flex_about global_middle_font' bindchange="checkboxChange">
+    <checkbox value="1" checked="true" /> 阅读并同意
+    <navigator style='color:#293be5' url="/pages/personal/useragreement/useragreement">用户协议 </navigator>
+  </checkbox-group>
+
+  <!-- 提交 	-->
+  <button style='width:80%;height:80rpx;margin-top:30rpx;' type='primary' disabled='{{issure}}' form-type="submit">提交</button>
+  <view style='width:90%;height:80rpx;'></view>
+</form>

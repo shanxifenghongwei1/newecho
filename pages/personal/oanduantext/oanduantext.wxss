@@ -1,0 +1,99 @@
+/* pages/personal/oanduantext/oanduantext.wxss */
+page{
+	background-color: #eee;
+	width: 100%;
+}
+
+.top-text{
+	width: 94%;
+	padding: 3%;
+	background: #fff;
+	margin-bottom: 20rpx;
+}
+
+.one_list{
+	width: 100%;
+	line-height: 50rpx;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.text-bottom{
+	width: 94%;
+	padding: 3%;
+	height: 800rpx;
+	background: #fff;
+
+}
+
+.please-text{
+	width: 100%;
+	line-height: 70rpx;
+}
+
+.shop_name_text{
+	margin-left:30rpx;
+}
+
+.flow-text{
+	padding-left:50rpx;
+	margin-bottom:-1rpx; 
+	/* border-left: 6rpx solid #555; */
+	position: relative;
+
+}
+
+.text-flow{
+	margin-bottom: 30rpx;
+}
+
+.text-pl-te{
+	width: 100%;
+	line-height: 50rpx;
+}
+
+.small-radus{
+	/* width: 30rpx;
+	height: 30rpx; */
+	/* border-radius: 15rpx;
+	background: #655; */
+	position: absolute;
+	left: 0rpx;
+	top:20rpx;
+}
+
+.yuan{
+	width: 30rpx;
+	height: 30rpx; 
+	border-radius: 15rpx;
+	background: #655;
+}
+
+.shu{
+	margin-left:14rpx;
+	width: 1rpx;
+	height: 137rpx;
+	border: 1rpx solid #655;
+}
+
+.my_sure{
+	width: 550rpx;
+	/* height: 100rpx; */
+}
+
+.my_sures{
+	line-height: null;
+}
+/* .shop_name_text{
+	width: 800rpx;
+	height: 100rpx;
+} */
+.shop_name{
+	color:#999;
+}
+
+.actives{
+	background: #ed4444;
+}

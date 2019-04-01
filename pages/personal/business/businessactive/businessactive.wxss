@@ -1,0 +1,113 @@
+/* pages/personal/business/businessactive/businessactive.wxss */
+@import '/pages/personal/business/productcenter/productcenter.wxss';
+@import '/pages/personal/business/businessactiveadd/businessactiveadd.wxss';
+@import '/utils/wxss/last.wxss';
+
+page {
+  background: #eee;
+}
+
+.avtivcenter {
+  width: 100%;
+  line-height: 70rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.peopresa {
+  width: 12%;
+}
+
+.back-image-s{
+	display: flex;
+	/* align-items: center; */
+	justify-content: flex-start;
+	width: 94%;
+	height: 170rpx;
+	padding: 3%;
+	background: url('http://www.nazhua.net/upload/backgroun.png') no-repeat center center;
+	background-size:100% 100%;
+}
+
+.middel {
+  width: 100%;
+  line-height: 70rpx;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.top_images-youhui{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	/* align-items: center; */
+	justify-content: flex-start;
+}
+
+.one-activ {
+  width: 90%;
+  padding: 5%;
+  border-top: 1rpx solid #eee;
+  border-radius: 18rpx;
+  margin-top: 10rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.iconfont {
+  font-size: 13px;
+  color: #191919;
+}
+
+.font-colors {
+  color: #191919;
+}
+
+.leftandright {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #eee;
+}
+
+.button-view {
+  border-radius: 15rpx;
+  background: #356ce0;
+  color: #fff;
+  margin-top: 30rpx;
+  width: 100rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border: 1rpx solid #eee;
+}
+
+.button-view-th {
+  border-radius: 15rpx;
+  background: #06c1ae;
+  color: #fff;
+  margin-top: 30rpx;
+  width: 100rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border: 1rpx solid #eee;
+}
+
+.move-shop{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button-view-one{
+	background:#db524c;
+	color: #fff;
+  margin-top: 30rpx;
+  width: 100rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border: 1rpx solid #eee;
+	 border-radius: 15rpx;
+}

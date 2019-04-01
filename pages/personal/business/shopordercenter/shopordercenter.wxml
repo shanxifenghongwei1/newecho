@@ -1,0 +1,77 @@
+
+<view class='any'>
+  <!-- <view class='order'>
+    <view wx:for="{{order}}" wx:key='orderKey' class='order-son {{cid==item.type_id?"active":""}}' data-id='{{item.type_id}}' bindtap='addorderid'>{{item.text}}</view>
+  </view>
+  <view class='newline'></view> -->
+
+
+  <!-- 订单模块 -->
+  <view>
+    <view class='my-order' wx:for="{{shop}}" wx:key='index'>
+            <view class='shop'>
+        <!-- <view class=' global_middle_font shop-name'>
+        </view> -->
+        <view style='text-align:left;' class='state global_middle_font' wx:if='{{item.order_mode==2}}'>商品订单</view>
+         <view style='text-align:left;' class='state global_middle_font' wx:if='{{item.order_mode==1}}'>店铺订单</view>
+      </view>
+<!-- 商品订单 -->
+      <view wx:if='{{item.order_mode == 2}}' class='flex_about padding-all commdity'>
+        <view class='commdity-pic'>
+          <image src='{{item.Head_portrait}}' style='width:100%;height:150rpx;'></image>
+        </view>
+        <view class=' global_middle_font commdity-particulars'>
+          <view class='flex_about shop-money'>
+            <view class='global_single_ellipsis global_small_font'>用户： {{item.Nickname}}</view>
+            <view></view>
+            <view class='global_color_red global_small_font'> 商品价格¥：{{item.goods_price}}</view>
+          </view>
+          <view class='flex_about shop-money'>
+            <view class='global_small_font'>订单编号：{{item.order_sn}}</view>
+            <view></view>
+          </view>
+					<view style='margin-top:2%;' class='global_small_font'>支付时间: {{item.order_time}}</view>
+          <view class='flex_about shop-money'>
+            <view class='global_single_ellipsis global_small_font'>商品：{{item.goods_name}}</view>
+            <view></view>
+            <view class='global_color_red global_small_font'>支付金额： ¥{{item.pay_money}}</view>
+          </view>
+          <view class='shop-number'></view>
+        </view>
+      </view>
+<!-- 店铺订单 -->
+  <view wx:if='{{item.order_mode==1}}' class='flex_about padding-all commdity' data-shop_id='{{item.shop_id}}' bindtap='runshop'>
+        <view class='commdity-pic'>
+          <image src='{{item.Head_portrait}}' mode="widthFix"></image>
+        </view>
+        <view class=' global_middle_font commdity-particulars'>
+          <view class='flex_about shop-money'>
+            <view class='global_small_font'>用户：{{item.Nickname}}</view>
+            <view></view>
+          </view>
+          <view class='flex_about shop-money'>
+            <view class='global_small_font'>订单编号：{{item.order_sn}}</view>
+         
+          </view>
+					   <view style='margin-top:2%;' class='global_small_font'>支付时间:{{item.order_time}}</view>
+          <view class='flex_about shop-money'>
+            <view></view>
+            <view></view>
+            <view class='global_color_red global_small_font'> 支付金额：¥{{item.pay_money}}</view>
+          </view>
+          <view class='shop-number'></view>
+        </view>
+      </view>
+      <!-- <view class=' flex_about padding-all time'>
+        <view class='global_small_font this-time'>时间:{{item.order_time}}</view>
+        <view></view>
+        <view class='flex_about'> -->
+          <!-- <navigator wx:if='{{item.pay_type==2}}' bindtap='storygoodslist' data-order_id='{{item.order_id}}' class='global_bg_color_red global_middle_font payfor '>去支付</navigator>
+          <navigator wx:if='{{item.pay_type!==2||item.comment_status!==0}}' class='global_bg_color_red global_middle_font payfor ' url='/pages/shop/comment/comment?order_id={{item.order_id}}' bindtap='addComment'>评论</navigator> -->
+          
+        <!-- </view> -->
+      <!-- </view> -->
+    </view>
+  </view>
+
+</view>

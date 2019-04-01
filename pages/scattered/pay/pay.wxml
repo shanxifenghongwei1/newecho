@@ -1,0 +1,166 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+
+<view class='page_module global_middle_font global_bg_color'>
+  <view class='padding-all pay-info'>
+    <!-- 订单类型 -->
+    <view class='flex_about  line-border-bottom shop-goods'>
+      <view>
+        订单类型
+      </view>
+      <view></view>
+      <view wx:if='{{order_type==2}}'>商品订单</view>
+      <view wx:if='{{order_type==1}}'>店铺订单</view>
+    </view>
+    <!-- 店铺订单 -->
+    <view class='flex_about shop-detail line-border-bottom'>
+      <view class="slide-image">
+        <image src='{{shop_image}}' mode='widthFix'></image>
+      </view>
+      <view class=' global_single_ellipsis'>{{shop_name}}</view>
+    </view>
+    <!-- 支付金额输入框 -->
+    <view wx:if='{{order_type==1}}' class='flex_about money'>
+      <text>支付金额</text>
+      <input type="digit" focus="true" bindinput='shurumoney' maxlength='8' placeholder='请输入金额' placeholder-class="money_input" value='{{payformoney}}' maxlength="10"></input>
+    </view>
+    <view wx:if='{{order_type==1}}'>
+      <!-- 优惠券 -->
+      <view wx:if='{{uservirtual.length !==0}}' style='display:flex;align-items: center;justify-content:space-between' class='money'>
+        <text>优惠券</text>
+        <text style='width:50%'>{{youhuitext}}</text>
+        <view bindtap='runjumpthis' style='width:20%;;height:80rpx;text-align:right;line-height:80rpx;' class='iconfont icon-sandian1 money_input'></view>
+      </view>
+      <!-- 支付金额 -->
+      <view style='display:flex;align-items: center;justify-content:space-between' class='money'>
+        <text style='width:35%;'>应付：{{payformoney}}</text>
+        <text wx:if='{{ischecked}}' style='width:29%;text-align:center;'> 优惠:{{reduce_money}}</text>
+        <view style='width:35%;;height:80rpx;text-align:left;line-height:80rpx;' class='money_input'> 实付：{{userCanLook}}</view>
+      </view>
+    </view>
+    <!-- 商品订单菜单 -->
+    <view wx:if='{{order_type==2}}'>
+      <view class='flex_about goods-detail line-border-bottom'>
+        <view class="slide-image">
+          <image src='{{goods_image}}' style='width:100%;height:150rpx;'></image>
+        </view>
+        <view class=' global_single_ellipsis goods-info'>
+          <view class='global_single_ellipsis'>{{goods_name}}</view>
+          <view class='global_small_font'>{{goods_keywords}}</view>
+          <view class='flex_about'>
+            <view class="global_color_red">￥{{goods_price}}</view>
+            <view></view>
+
+            <view class='shuliang'>
+              <view>数量：</view>
+              <view bindtap='subtract_number' class='subtract'>-</view>
+              <input bindinput='goods_number' disabled='true' value='{{goods_number}}'></input>
+              <view class='subtract' bindtap='add_number'>+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 支付金额 -->
+      <view class='integration line-border-bottom money'>
+        <view class='flex_about switch_module'>
+          <view>支付金额</view>
+          <view class="global_color_red">￥{{sure_pay}}</view>
+        </view>
+      </view>
+
+
+      <!-- 优惠券 -->
+      <view wx:if='{{uservirtual.length !==0 && dis_text.length <= 0}}' style='display:flex;align-items: center;justify-content:space-between' class='money' bindtap='runjumpthis'>
+        <text>优惠券</text>
+        <text style='width:50%'>{{youhuitext}}</text>
+        <view style='width:20%;;height:80rpx;text-align:right;line-height:80rpx;' class='iconfont icon-sandian1 money_input'></view>
+      </view>
+      <!-- 支付金额 -->
+      <view style='display:flex;align-items: center;justify-content:space-between' class='money'>
+        <text style='width:30%;'>应付：{{sure_pay}}</text>
+        <text wx:if='{{ischecked}}' style='width:40%;text-align:center;'> 优惠{{reduce_money}}</text>
+        <view style='width:30%;;height:80rpx;text-align:right;line-height:80rpx;' class='money_input'> 实付：{{userCansee}}</view>
+
+      </view>
+
+    </view>
+
+  </view>
+
+
+  <!-- <view class='newline'></view> -->
+  <!-- 选择支付方式 -->
+
+  <view class='flex_about money paymessage-choose'>
+    <radio-group bindchange="radioChange" class="group wantflex">
+      <view class="label-2" wx:for="{{radioItems}}" wx:key='index'>
+        <radio id="{{item.name}}" style='margin-left:30rpx;' value="{{item.name}}" checked="{{item.checked}}"></radio>
+        <label class="label-2__text" for="{{item.name}}">
+          <text>{{item.name}}</text>
+        </label>
+      </view>
+    </radio-group>
+  </view>
+
+  <!-- 阅读并同意用户协议 -->
+
+  <view class='global_middle_font' style='width:94%;line-height:60rpx;padding-left:3%;background:#fff;' wx:if='{{order_type==2 && iloveyou != 3}}'> 本次支付将获得{{integralUS}}积分 </view>
+
+  <view class='global_middle_font' style='width:94%;line-height:60rpx;padding-left:3%;background:#fff;' wx:if='{{order_type==1 && iloveyou != 3}}'> 本次支付将获得{{integralS}}积分 </view>
+  <!-- 您是本店会员，享受{{dis}}折优惠 -->
+  <view class='global_middle_font' style='width:94%;line-height:60rpx;padding-left:3%;background:#fff;' wx:if='{{order_type==1 && iloveyou == 3 && qwert > 0 }}'> 您是本店会员，享受{{qwert}}折优惠 </view>
+
+  <view class='global_middle_font' style='width:94%;line-height:60rpx;padding-left:3%;background:#fff;' wx:if='{{order_type==2 && iloveyou == 3 && qwert > 0 }}'> 您是本店会员，享受{{qwert}}折优惠 </view>
+
+  <view class='padding-all integration  pay_btn'>
+    <checkbox-group class='flex_about' bindchange="checkboxChange">
+      <checkbox value="1" checked="true" /> 阅读并同意
+      <navigator url="/pages/scattered/userAgreement/userAgreement">用户协议 </navigator>
+    </checkbox-group>
+    <!-- 确认支付按钮 -->
+    <view wx:if='{{areyouok==1}}'>
+
+      <form wx:if='{{order_type==2 && hidden == false}}' bindsubmit="payClick" report-submit='true'>
+        <button form-type="submit" class='global_bg_color_red global_middle_font'>
+          确定支付
+        </button>
+      </form>
+
+      <button wx:if='{{order_type==2 && hidden == true}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='global_bg_color_red global_middle_font'>
+        确定支付
+      </button>
+      <form bindsubmit="shangjiapay" wx:if='{{order_type==1 && hidden==false}}' report-submit='true'>
+        <button form-type="submit" class='global_bg_color_red global_middle_font'>商铺支付</button>
+      </form>
+
+      <button wx:if='{{order_type==1  && hidden == true}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='global_bg_color_red global_middle_font'>商铺支付</button>
+
+    </view>
+  </view>
+</view>
+<!-- 优惠券展示列表 -->
+<view wx:if='{{textcenter}}' class='anyevery'>
+  <view class='bottom-in-price'>
+    <view class='price-top'>
+      <view class='top-lefty'></view>
+      <view class='top-rights' bindtap='closessa'>×</view>
+    </view>
+    <scroll-view scroll-y class='bottom-in-price-content'>
+
+      <view class='nohave-exchange global_middle_font' bindtap='nohave_exchange'>不选择</view>
+
+      <view wx:for='{{uservirtual}}' wx:key='index' bindtap='givemoneytome' data-moneys='{{tools.turnInt(item.reduce_money)}}' data-id="{{item.card_name}}" data-ac='{{item.id}}' data-shop='{{item.shop_id}}' class='ticket flex_about'>
+        <view class=' global_color_red ticket_money flex_about '>{{tools.turnInt(item.reduce_money)}}
+          <!-- <text class='global_small_font global_color_red'>元</text> -->
+        </view>
+        <view class="ticket_info">
+          <view class='global_middle_font'>{{item.card_name}}</view>
+        </view>
+        <view class="payment flex_about global_large_font">
+          <view class='iconfont icon-hongbaojuchi-copy'></view>
+          <view class='flex_about payment1'>使用</view>
+        </view>
+      </view>
+
+    </scroll-view>
+  </view>
+</view>

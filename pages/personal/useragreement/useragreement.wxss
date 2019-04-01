@@ -1,0 +1,5 @@
+/* pages/personal/useragreement/useragreement.wxss */
+.helptext-module{
+	padding: 3%;
+	width: 94%;
+}

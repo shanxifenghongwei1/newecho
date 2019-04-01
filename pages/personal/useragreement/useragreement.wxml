@@ -1,0 +1,4 @@
+<!--pages/personal/useragreement/useragreement.wxml-->
+<view class='page_module global_middle_font helptext-module'>
+  <rich-text nodes="{{usertext.text}}"></rich-text>
+</view>

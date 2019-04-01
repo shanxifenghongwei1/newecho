@@ -1,0 +1,120 @@
+<!--微信账单-->
+<view class='any' wx:if="{{es.key=='wx'}}">
+  <view class='onegoodslistondetal global_middle_font'>类型:{{es.type_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>商家名称:{{es.shop_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>订单编号:{{es.desc_sn}}</view>
+  <view class='onegoodslistondetal global_middle_font'>订单金额:{{es.order_money}}</view>
+  
+  <view wx:if="{{es.type!==''}}" class='onegoodslistondetal global_middle_font'>商家电话:{{es.iphone}}</view>
+  <view wx:if="{{es.type==''}}" class='onegoodslistondetal global_middle_font'>商家电话:该商家还没设置电话</view>
+
+  <!--优惠券信息  -->
+  <view wx:if="{{es.virtual!==''}}" class='onegoodslistondetal global_middle_font'>优惠券名称:{{es.virtual.name}}</view>
+  <view wx:if="{{es.virtual!==''}}" class='onegoodslistondetal global_middle_font'>优惠券金额:{{es.virtual.reduce_money}}</view>
+
+  
+  <!--商品支付-->
+  <view wx:if="{{es.goods!==''}}" class='onegoodslistondetal global_middle_font'>商品名称:{{es.goods.name}}</view>
+  <view wx:if="{{es.goods!==''}}" class='onegoodslistondetal global_middle_font'>商品数量:{{es.goods.number}}</view>
+
+
+  <view class='onegoodslistondetal global_middle_font'>支付金额:{{es.pay_money}}</view>
+ <view class='onegoodslistondetal global_middle_font'>下单时间:{{es.order_time}}</view>
+ <view class='onegoodslistondetal global_middle_font'>支付时间:{{es.pay_time}}</view>
+
+</view>
+
+
+
+<!--买单币账单-->
+<view class='any' wx:if="{{es.key=='mdb'}}">
+  <view class='onegoodslistondetal global_middle_font'>类型:{{es.type_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>商家名称:{{es.shop_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>订单编号:{{es.desc_sn}}</view>
+  <view class='onegoodslistondetal global_middle_font'>金额:{{es.money}}</view>
+  <view wx:if="{{es.type!==''}}" class='onegoodslistondetal global_middle_font'>商家电话:{{es.iphone}}</view>
+  <view wx:if="{{es.type==''}}" class='onegoodslistondetal global_middle_font'>商家电话:该商家还没设置电话</view>
+  <!--商品支付-->
+  <view wx:if="{{es.goods!==''}}" class='onegoodslistondetal global_middle_font'>商品名称:{{es.goods.goods_name}}</view>
+  <view wx:if="{{es.goods!==''}}" class='onegoodslistondetal global_middle_font'>商品数量:{{es.goods.goods_number}}</view>
+<view wx:if="{{es.type==2&&es.use_virtual!==''}}" class='onegoodslistondetal global_middle_font'>优惠券名称:{{es.use_virtual.name}}</view>
+<view wx:if="{{es.type==2&&es.use_virtual!==''}}" class='onegoodslistondetal global_middle_font'>支付金额:{{es.use_virtual.pay_money}}</view>
+<view wx:if="{{es.type==2&&es.use_virtual!==''}}" class='onegoodslistondetal global_middle_font'>优惠金额:{{es.use_virtual.reduce_money}}</view>
+  <!--活动充值  -->
+  <view wx:if="{{es.activity!==''}}" class='onegoodslistondetal global_middle_font'>活动名称:{{es.activity.name}}</view>
+  <view wx:if="{{es.activity!==''}}" class='onegoodslistondetal global_middle_font'>赠送买单币:{{es.activity.give_money}}</view>
+
+  <!--活动充值 赠送优惠券-->
+
+  <view wx:if="{{es.virtual!==''}}" class='onegoodslistondetal global_middle_font'>赠送优惠券:{{es.virtual.name}}</view>
+  <view wx:if="{{es.virtual!==''}}" class='onegoodslistondetal global_middle_font'>赠送数量:{{es.virtual.number}}</view>
+
+
+  <view class='onegoodslistondetal global_middle_font'>支付时间:{{es.time}}</view>
+
+
+
+
+  <!-- <view wx:if='{{!business_id}}' class='onegoodslistondetal global_middle_font'>
+    <navigator class='onegoodslistondetal global_middle_font' url="/pages/index/oddments/oddments?shop_id={{business_id}}&juli=账单查看">
+      <button class="re_but">进入店铺</button>
+    </navigator>
+  </view> -->
+</view>
+
+<!--余额账单-->
+<view class='any' wx:if="{{es.key=='yue'}}">
+  <view class='onegoodslistondetal global_middle_font'>类型:{{es.type_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>商家名称:{{es.shop_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>订单编号:{{es.desc_sn}}</view>
+  <view wx:if="{{es.iphone!==''}}" class='onegoodslistondetal global_middle_font'>商家电话:{{es.iphone}}</view>
+  <view wx:if="{{es.iphone==''}}" class='onegoodslistondetal global_middle_font'>商家电话:该商家还没设置电话</view>
+  <!--商品支付-->
+  <view wx:if="{{es.type==2&&es.goods.length>0}}" class='onegoodslistondetal global_middle_font'>商品名称:{{es.goods.goods_name}}</view>
+  <view wx:if="{{es.type==2&&es.goods.length>0}}" class='onegoodslistondetal global_middle_font'>商品数量:{{es.goods.goods_number}}</view>
+
+
+
+<view wx:if="{{es.virtual!==''}}">
+
+ <view class='onegoodslistondetal global_middle_font'>优惠券名称:{{es.virtual.name}}</view>
+  <view  class='onegoodslistondetal global_middle_font'>订单金额:{{es.virtual.order_money}}</view>
+<view  class='onegoodslistondetal global_middle_font'>优惠金额:{{es.virtual.reduce_money}}</view>
+</view>
+
+<view  class='onegoodslistondetal global_middle_font'>支付金额:{{es.money}}</view>
+  <view class='onegoodslistondetal global_middle_font'>支付时间:{{es.time}}</view>
+
+
+
+
+  <!-- <view wx:if='{{!business_id}}' class='onegoodslistondetal global_middle_font'>
+    <navigator class='onegoodslistondetal global_middle_font' url="/pages/index/oddments/oddments?shop_id={{business_id}}&juli=账单查看">
+      <button class="re_but">进入店铺</button>
+    </navigator>
+  </view> -->
+</view>
+
+
+<!--提现账单-->
+<view class='any' wx:if="{{es.key=='tix'}}">
+  <view class='onegoodslistondetal global_middle_font'>类型:{{es.type_name}}</view>
+
+  <view class='onegoodslistondetal global_middle_font'>订单编号:{{es.desc_sn}}</view>
+  <view class='onegoodslistondetal global_middle_font'>金额:{{es.money}}</view>
+
+  <!--银行卡信息-->
+  <view class='onegoodslistondetal global_middle_font'>银行卡名称:{{es.bank.bank_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>银行卡号:{{es.bank.number}}</view>
+  <view class='onegoodslistondetal global_middle_font'>开户姓名:{{es.bank.user_name}}</view>
+  <view class='onegoodslistondetal global_middle_font'>预留电话:{{es.bank.iphone}}</view>
+
+  <view class='onegoodslistondetal global_middle_font'>状态:{{es.cash_type}}</view>
+  <view class='onegoodslistondetal global_middle_font'>时间:{{es.time}}</view>
+
+  <!-- <view wx:if='{{!business_id}}' class='onegoodslistondetal global_middle_font'>
+    <navigator class='onegoodslistondetal global_middle_font' url="/pages/index/oddments/oddments?shop_id={{business_id}}&juli=账单查看">
+      <button class="re_but">进入店铺</button>
+    </navigator>
+  </view> -->
+</view>
